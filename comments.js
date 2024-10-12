@@ -1,22 +1,20 @@
-// Creat web server
-// npm install express
-// npm install body-parser
-// npm install mongoose
-// npm install ejs
-// npm install express-sanitizer
-// npm install method-override
-// npm install moment
-// npm install passport
-// npm install passport-local
-// npm install passport-local-mongoose
-// npm install express-session
-// npm install connect-flash
-// npm install multer
-// npm install cloudinary
-// npm install dotenv
-// npm install nodemailer
-// npm install nodemailer-smtp-transport
-// npm install async
-// npm install crypto
-// npm install request
-// npm install cheerio
+//Create web server
+//Create a web server that listens on port 3000 and serves the comments.html file.
+//Use the fs module to read the comments.html file and send it back to the client.
+
+var http = require('http');
+var fs = require('fs');
+
+http.createServer(function(req, res) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  fs.readFile('comments.html', function(err, data) {
+    if (err) {
+      res.writeHead(404);
+      res.write('File not found!');
+    } else {
+      res.write(data);
+    }
+    res.end();
+  });
+}).listen(3000);
+console.log('Server is listening on port 3000');
