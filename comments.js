@@ -1,48 +1,22 @@
 // Creat web server
-const express = require('express');
-const app = express();
-const fs = require('fs');
-const path = require('path');
-const bodyParser = require('body-parser');
-
-app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'public')));
-
-const commentsPath = path.join(__dirname, 'data/comments.json');
-
-app.get('/api/comments', (req, res) => {
-  fs.readFile(commentsPath, 'utf8', (err, data) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send('Internal server error');
-      return;
-    }
-    res.json(JSON.parse(data));
-  });
-});
-
-app.post('/api/comments', (req, res) => {
-  fs.readFile(commentsPath, 'utf8', (err, data) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send('Internal server error');
-      return;
-    }
-    const comments = JSON.parse(data);
-    const newComment = req.body;
-    newComment.id = comments.length + 1;
-    comments.push(newComment);
-    fs.writeFile(commentsPath, JSON.stringify(comments), (err) => {
-      if (err) {
-        console.log(err);
-        res.status(500).send('Internal server error');
-        return;
-      }
-      res.status(201).send('Comment added');
-    });
-  });
-});
-
-app.listen(3000, () => {
-  console.log('Server is running on http://localhost:3000');
-});
+// npm install express
+// npm install body-parser
+// npm install mongoose
+// npm install ejs
+// npm install express-sanitizer
+// npm install method-override
+// npm install moment
+// npm install passport
+// npm install passport-local
+// npm install passport-local-mongoose
+// npm install express-session
+// npm install connect-flash
+// npm install multer
+// npm install cloudinary
+// npm install dotenv
+// npm install nodemailer
+// npm install nodemailer-smtp-transport
+// npm install async
+// npm install crypto
+// npm install request
+// npm install cheerio
